@@ -118,6 +118,28 @@ class doublyLL:
         # Current node points to new node
         t.next = temp
 
+    def delete(self,value):
+        t=self.head
+        if(t.data==None):
+            print("empty linkedlist")
+            return
+        if(t.data==value):
+            self.head=t.next
+            self.head.prev=None
+            return
+        
+        while(t.next!=None):
+            if(t.data==value):
+                t.prev.next=t.next
+                t.next.prev=t.prev
+                return
+            else:
+                t=t.next
+        if(t.data==value):
+            t.prev.next=None
+            return
+                
+
     # -----------------------------------
     # Display list
     # -----------------------------------
@@ -145,6 +167,8 @@ obj.insertatbeg(0)
 
 # Insert 7 after 10
 obj.insertatmid(7, 10)
+
+obj.delete(1)
 
 # Display list
 obj.display()
